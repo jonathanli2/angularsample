@@ -8,6 +8,7 @@ import { Cmp2Component } from '../cmp2/cmp2.component';
 import { Subcmp1Component } from '../subcmp1/subcmp1.component';
 import { Subcmp2Component } from '../subcmp2/subcmp2.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
