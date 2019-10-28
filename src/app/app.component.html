@@ -1,22 +1,30 @@
 <!--link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet"-->
 <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css-->
 <!--link rel="stylesheet" href="http://localhost:4200/assets/mystyles.css"-->
-<ul class="nav nav-tabs nav-justified">
-  <li class="nav-item">
-    <a class="nav-link nav-item " href="#">Active</a>
+<!--ul class="nav nav-tabs">
+  <li class="nav-item" routerLinkActive="active" >
+    <a class="nav-link" routerLink="/" >home</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active" >
+    <a class="nav-link" routerLink="/c1" >comp 1</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active" >
+    <a class="nav-link" [routerLink]="['/c2']" >comp 2</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link nav-item  active" href="#">Link</a>
+    <a class="nav-link" (click)="onclicked($event)" href="#">Other</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
-<div>
-<p>The app component title</p>
+</ul-->
+<div class="m-4">
+  <tabset type="pills" [justified]="true">
+    <tab heading="Home" id="home" (selectTab)="onSelect($event)"></tab>
+    <tab heading="Comp 1" id="comp1" (selectTab)="onSelect($event)"></tab>
+    <tab heading="Comp 2" id="comp2" (selectTab)="onSelect($event)"></tab>
+    <tab heading="Other" id="other" (selectTab)="onSelect($event)"></tab>
+  </tabset>
+</div>
+<div class="m-4">
+<p>The app component's activated route: {{this.activatedRoute}}</p>
 <p myattribute>the app component content</p>
 <div class="container test">
   <div class="row">
@@ -29,5 +37,7 @@
   </div>
 </div>
 </div>
-
+<hr>
+<div>router section</div>
+<hr>
 <router-outlet></router-outlet>

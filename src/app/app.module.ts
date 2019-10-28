@@ -7,6 +7,9 @@ import { Cmp1Component } from '../cmp1/cmp1.component';
 import { Cmp2Component } from '../cmp2/cmp2.component';
 import { Subcmp1Component } from '../subcmp1/subcmp1.component';
 import { Subcmp2Component } from '../subcmp2/subcmp2.component';
+import { Routes, RouterModule } from '@angular/router';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { Subcmp2Component } from '../subcmp2/subcmp2.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
