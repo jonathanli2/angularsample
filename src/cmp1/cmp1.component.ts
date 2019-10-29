@@ -14,7 +14,11 @@ export class Cmp1Component implements OnInit {
   }
 
   onC1ButtonClicked(myid) {
-    this.router.navigate(['c1', myid], {relativeTo: this.activatedRoute});
+    this.router.navigate(['c1', myid], {/*relativeTo: this.activatedRoute,*/ queryParams:{index: myid}, fragment: 'here' + myid});
+  }
+
+  onC2ButtonClicked(myid) {
+    this.router.navigate(['c2', 'sub1', myid], {/*relativeTo: this.activatedRoute, */queryParams:{index: myid}, fragment: 'here' + myid});
   }
 
 }
