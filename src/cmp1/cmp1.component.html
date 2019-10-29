@@ -3,4 +3,5 @@
 <p>The comp 1 component's activated route: {{this.activatedRoute}}</p>
 
 <a href="c2" routerLink="c2" >comp 2 link</a><p></p>
-<button class="btn btn-primary" (click)="onC1ButtonClicked()">Button</button>
+<input #myID>
+<button class="btn btn-primary" (click)="onC1ButtonClicked(myID.value)">Button</button>

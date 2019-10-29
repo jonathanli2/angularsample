@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cmp1',
@@ -8,13 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class Cmp1Component implements OnInit {
 
-  constructor(public activatedRoute: ActivatedRoute) { }
+  constructor(public activatedRoute: ActivatedRoute, public router: Router) { }
 
   ngOnInit() {
   }
 
-  onC1ButtonClicked() {
-
+  onC1ButtonClicked(myid) {
+    this.router.navigate(['c1', myid], {relativeTo: this.activatedRoute});
   }
 
 }

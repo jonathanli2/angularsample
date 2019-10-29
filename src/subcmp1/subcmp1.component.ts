@@ -7,12 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./subcmp1.component.css']
 })
 export class Subcmp1Component implements OnInit {
-  id: number;
+  id: string;
 
   constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.activatedRoute.snapshot.params.id;
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
 }
