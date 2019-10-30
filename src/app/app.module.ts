@@ -9,7 +9,7 @@ import { Subcmp1Component } from '../subcmp1/subcmp1.component';
 import { Subcmp2Component } from '../subcmp2/subcmp2.component';
 import { Routes, RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-
+import { BasicHighLightDirective } from '../directive/basic-highlight.directive';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     Cmp1Component,
     Cmp2Component,
     Subcmp1Component,
-    Subcmp2Component
+    Subcmp2Component,
+    BasicHighLightDirective
   ],
   imports: [
     BrowserModule,
