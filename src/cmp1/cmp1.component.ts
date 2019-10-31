@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessagingService } from '../messaging/messaging.service';
 import { Subscriber } from 'rxjs';
+
+
 @Component({
   selector: 'app-cmp1',
   templateUrl: './cmp1.component.html',
@@ -9,6 +11,7 @@ import { Subscriber } from 'rxjs';
 })
 export class Cmp1Component implements OnInit {
   stockPrice = 100;
+  isBehaviorSubject: boolean;
 
   constructor(public activatedRoute: ActivatedRoute, public router: Router, private messaging: MessagingService  ) { }
 
@@ -40,13 +43,26 @@ export class Cmp1Component implements OnInit {
   }
 
   onUpdateStockPriceBySubject(priceChange: number) {
-    this.stockPrice = this.stockPrice + priceChange;
-    this.messaging.stockSubject.next(this.stockPrice);
+ 
+    if (this.isBehaviorSubject) {
+      this.messaging.stockBehaviorSubject.next(this.messaging.stockBehaviorSubject.value + priceChange);
+    } else {
+      this.stockPrice = this.stockPrice + priceChange;
+      this.messaging.stockSubject.next(this.stockPrice);
+    }
   }
   onErrorStockPriceBySubject() {
-    this.messaging.stockSubject.error('error happened in stock price subject');
+    if (this.isBehaviorSubject) {
+      this.messaging.stockBehaviorSubject.error('error happens in behaviorsubject');
+    } else {
+      this.messaging.stockSubject.error('error happened in stock price subject');
+    }
   }
   onCompleteStockPriceBySubject() {
-    this.messaging.stockSubject.complete();
+    if (this.isBehaviorSubject) {
+      this.messaging.stockBehaviorSubject.complete();
+    } else {
+      this.messaging.stockSubject.complete();
+    }
   }
 }

@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BasicHighLightDirective } from '../directive/basic-highlight.directive';
 import { MessagingService } from '../messaging/messaging.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MessagingService } from '../messaging/messaging.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    FormsModule
   ],
   providers: [MessagingService],
   bootstrap: [AppComponent]

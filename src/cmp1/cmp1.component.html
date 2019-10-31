@@ -14,6 +14,7 @@
 <button class="btn btn-primary m-2" (click)="onCompleteStockPriceByObservable()">Price complete by Observable</button>
 
 <br>
+<input type="checkbox" id="isBehaviorSubject" [(ngModel)]="isBehaviorSubject">
 <button class="btn btn-primary m-2" (click)="onUpdateStockPriceBySubject(1)">Price Update by Subject</button>
 <button class="btn btn-primary m-2" (click)="onErrorStockPriceBySubject()">Price Error by Subject</button>
 <button class="btn btn-primary m-2" (click)="onCompleteStockPriceBySubject()">Price complete by Subject</button>
