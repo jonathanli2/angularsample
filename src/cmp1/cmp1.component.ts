@@ -33,9 +33,20 @@ export class Cmp1Component implements OnInit {
     this.messaging.stockSubscriber.next(this.stockPrice);
   }
   onErrorStockPriceByObservable() {
-    this.messaging.stockSubscriber.error('error happened in stock price update');
+    this.messaging.stockSubscriber.error('error happened in stock price observable');
   }
   onCompleteStockPriceByObservable() {
     this.messaging.stockSubscriber.complete();
+  }
+
+  onUpdateStockPriceBySubject(priceChange: number) {
+    this.stockPrice = this.stockPrice + priceChange;
+    this.messaging.stockSubject.next(this.stockPrice);
+  }
+  onErrorStockPriceBySubject() {
+    this.messaging.stockSubject.error('error happened in stock price subject');
+  }
+  onCompleteStockPriceBySubject() {
+    this.messaging.stockSubject.complete();
   }
 }

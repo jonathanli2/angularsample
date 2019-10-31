@@ -17,13 +17,14 @@ export class AppComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private eventSub: Subscription;
   private stockObservableSub: Subscription;
+  private stockSubjectSub: Subscription;
 
   stockPrice: number;
   stockPriceError: string;
 
   constructor(private router: Router,
-              public activatedRoute: ActivatedRoute,
-              private messaging: MessagingService) {
+    public activatedRoute: ActivatedRoute,
+    private messaging: MessagingService) {
   }
 
   ngOnInit() {
@@ -33,16 +34,16 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log(params);
     });
 
-    this.sub = interval(1000).subscribe(c  => {
+    this.sub = interval(1000).subscribe(c => {
       this.count = c;
       console.log(c);
     });
 
-    this.eventSub = this.messaging.stockEventEmitter.subscribe( price => {
+    this.eventSub = this.messaging.stockEventEmitter.subscribe(price => {
       this.stockPrice = price;
     });
 
-    this.stockObservableSub = this.messaging.stockObservable.subscribe( price => {
+    this.stockObservableSub = this.messaging.stockObservable.subscribe(price => {
       this.stockPrice = price;
     }, error => {
       this.stockPrice = -1;
@@ -50,6 +51,17 @@ export class AppComponent implements OnInit, OnDestroy {
     }, () => {
       this.stockPrice = -1;
       this.stockPriceError = 'observable completed!';
+    }
+    );
+
+    this.stockSubjectSub = this.messaging.stockSubject.subscribe(price => {
+      this.stockPrice = price;
+    }, error => {
+      this.stockPrice = -1;
+      this.stockPriceError = error;
+    }, () => {
+      this.stockPrice = -1;
+      this.stockPriceError = 'subject completed!';
     }
     );
   }
@@ -63,11 +75,11 @@ export class AppComponent implements OnInit, OnDestroy {
   onSelect(data: TabDirective): void {
     this.currentTab = data.id;
     if (data.id === 'home') {
-      this.router.navigate([''], {relativeTo: this.activatedRoute});
+      this.router.navigate([''], { relativeTo: this.activatedRoute });
     } else if (data.id === 'comp1') {
-      this.router.navigate(['c1'], {relativeTo: this.activatedRoute});
+      this.router.navigate(['c1'], { relativeTo: this.activatedRoute });
     } else if (data.id === 'comp2') {
-      this.router.navigate(['c2'], {relativeTo: this.activatedRoute});
+      this.router.navigate(['c2'], { relativeTo: this.activatedRoute });
     }
   }
 }
