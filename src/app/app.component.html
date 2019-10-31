@@ -24,6 +24,8 @@
   </tabset>
 </div>
 <div class="m-4">
+  <p *ngIf="this.stockPrice !== -1">stock price is {{this.stockPrice}}</p>
+  <p *ngIf="this.stockPrice === -1" >stock price stopped due to {{this.stockPriceError}}</p>
   <p>{{this.count}}</p>
 <p appBasicHighlight [colorEnter]="'yellow'" [colorLeave]="'purple'">The app component's activated route: {{this.activatedRoute}}</p>
 <p myattribute>the app component content</p>

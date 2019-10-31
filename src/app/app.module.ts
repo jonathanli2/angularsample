@@ -10,7 +10,7 @@ import { Subcmp2Component } from '../subcmp2/subcmp2.component';
 import { Routes, RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BasicHighLightDirective } from '../directive/basic-highlight.directive';
-
+import { MessagingService } from '../messaging/messaging.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { BasicHighLightDirective } from '../directive/basic-highlight.directive'
     AppRoutingModule,
     TabsModule.forRoot()
   ],
-  providers: [],
+  providers: [MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

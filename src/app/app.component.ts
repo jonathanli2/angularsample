@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { TabDirective } from 'ngx-bootstrap/tabs';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
+import { MessagingService } from '../messaging/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,15 @@ export class AppComponent implements OnInit, OnDestroy {
   currentTab = '';
   count = 0;
   private sub: Subscription;
+  private eventSub: Subscription;
+  private stockObservableSub: Subscription;
+
+  stockPrice: number;
+  stockPriceError: string;
 
   constructor(private router: Router,
-              public activatedRoute: ActivatedRoute) {
+              public activatedRoute: ActivatedRoute,
+              private messaging: MessagingService) {
   }
 
   ngOnInit() {
@@ -30,10 +37,27 @@ export class AppComponent implements OnInit, OnDestroy {
       this.count = c;
       console.log(c);
     });
+
+    this.eventSub = this.messaging.stockEventEmitter.subscribe( price => {
+      this.stockPrice = price;
+    });
+
+    this.stockObservableSub = this.messaging.stockObservable.subscribe( price => {
+      this.stockPrice = price;
+    }, error => {
+      this.stockPrice = -1;
+      this.stockPriceError = error;
+    }, () => {
+      this.stockPrice = -1;
+      this.stockPriceError = 'observable completed!';
+    }
+    );
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+    this.eventSub.unsubscribe();
+    this.stockObservableSub.unsubscribe();
   }
 
   onSelect(data: TabDirective): void {
