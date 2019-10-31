@@ -3,6 +3,18 @@
 <p>The comp 1 component's activated route: {{this.activatedRoute}}</p>
 <a href="c2" routerLink="c2" >comp 2 link</a><p></p>
 <input #myID>
-<button class="btn btn-primary m-4" (click)="onC1ButtonClicked(myID.value)">c1\:id link</button>
+<button class="btn btn-primary m-2" (click)="onC1ButtonClicked(myID.value)">c1\:id link</button>
 
-<button class="btn btn-primary" (click)="onC2ButtonClicked(myID.value)">c2 link</button>
+<button class="btn btn-primary m-2" (click)="onC2ButtonClicked(myID.value)">c2 link</button>
+<br>
+<button class="btn btn-primary m-2" (click)="onUpdateStockPrice(1)">Price Update by EventEmitter</button>
+<br>
+<button class="btn btn-primary m-2" (click)="onUpdateStockPriceByObservable(1)">Price Update by Observable</button>
+<button class="btn btn-primary m-2" (click)="onErrorStockPriceByObservable()">Price Error by Observable</button>
+<button class="btn btn-primary m-2" (click)="onCompleteStockPriceByObservable()">Price complete by Observable</button>
+
+<br>
+<input type="checkbox" id="isBehaviorSubject" [(ngModel)]="isBehaviorSubject">
+<button class="btn btn-primary m-2" (click)="onUpdateStockPriceBySubject(1)">Price Update by Subject</button>
+<button class="btn btn-primary m-2" (click)="onErrorStockPriceBySubject()">Price Error by Subject</button>
+<button class="btn btn-primary m-2" (click)="onCompleteStockPriceBySubject()">Price complete by Subject</button>
