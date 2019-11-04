@@ -5,6 +5,7 @@ import { Cmp1Component } from '../cmp1/cmp1.component';
 import { Cmp2Component } from '../cmp2/cmp2.component';
 import { Subcmp1Component } from 'src/subcmp1/subcmp1.component';
 import { Subcmp2Component } from 'src/subcmp2/subcmp2.component';
+import { FormComponent } from 'src/form/form.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
       {path: 'sub1/:id', component: Subcmp1Component},
       {path: 'sub2/:id', component: Subcmp2Component}
     ]
+  },
+  {
+    path: 'form', component: FormComponent
   },
   {
     path: '', component: AppComponent
