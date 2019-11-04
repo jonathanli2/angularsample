@@ -92,6 +92,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigate(['c1'], { relativeTo: this.activatedRoute });
     } else if (data.id === 'comp2') {
       this.router.navigate(['c2'], { relativeTo: this.activatedRoute });
+    } else if (data.id === 'form') {
+      this.router.navigate(['form'], {relativeTo: this.activatedRoute});
     }
   }
 }
