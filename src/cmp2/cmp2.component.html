@@ -1,4 +1,8 @@
 <p>cmp2 works!</p>
 <p>The comp 2 component's activated route: {{this.activatedRoute}}</p>
+<input type="text" id="lastname" class="form-control" ngModel name="lastname" required minlength="5" #lre="ngModel">
+<span class="help-block" style="color:red" *ngIf="lre.errors && lre.errors.required">lastname is required<br></span>
+<span class="help-block" style="color:red" *ngIf="lre.errors && lre.errors.minlength">lastname is min length is 5<br></span>
+<button type="button" class="btn btn-primary" (click)="onClick(lre)">submit</button>
 <hr>
 <router-outlet></router-outlet>
