@@ -24,6 +24,9 @@ const routes: Routes = [
     path: 'form', component: FormComponent
   },
   {
+    path: 'reactform', component: ReactFormComponent
+  },
+  {
     path: '', component: AppComponent
   }
 ];

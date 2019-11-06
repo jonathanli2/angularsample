@@ -13,6 +13,7 @@ import { BasicHighLightDirective } from '../directive/basic-highlight.directive'
 import { MessagingService } from '../messaging/messaging.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { FormComponent } from '../form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormComponent } from '../form/form.component';
     BrowserModule,
     AppRoutingModule,
     TabsModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [MessagingService],
   bootstrap: [AppComponent]
