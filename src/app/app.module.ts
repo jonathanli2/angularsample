@@ -11,7 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BasicHighLightDirective } from '../directive/basic-highlight.directive';
 import { MessagingService } from '../messaging/messaging.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { FormComponent } from '../form/form.component';
 
 @NgModule({
