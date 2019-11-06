@@ -6,6 +6,7 @@ import { Cmp2Component } from '../cmp2/cmp2.component';
 import { Subcmp1Component } from 'src/subcmp1/subcmp1.component';
 import { Subcmp2Component } from 'src/subcmp2/subcmp2.component';
 import { FormComponent } from 'src/form/form.component';
+import { ReactFormComponent } from '../react-form/react-form.component';
 
 const routes: Routes = [
   {

@@ -14,6 +14,7 @@ import { MessagingService } from '../messaging/messaging.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { FormComponent } from '../form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReactFormComponent } from '../react-form/react-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     Subcmp1Component,
     Subcmp2Component,
     BasicHighLightDirective,
-    FormComponent
+    FormComponent,
+    ReactFormComponent
   ],
   imports: [
     BrowserModule,
