@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -8,9 +8,9 @@ import { NgForm } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   @ViewChild('f', {static: false}) view: NgForm;
-  @ViewChild('first', {static: true}) firstNameValue;
-  @ViewChild('middleNameRef', {static: true}) middleName;
-  @ViewChild('lre', {static: true})  lastName;
+  @ViewChild('first', {static: true}) firstNameValue: NgModel;
+  @ViewChild('middleNameRef', {static: true}) middleName: ElementRef;
+  @ViewChild('lre', {static: true})  lastName: NgModel;
 
   middleNameValue = 'default Midname';
 
