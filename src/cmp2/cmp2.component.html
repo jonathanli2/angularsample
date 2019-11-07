@@ -1,8 +1,24 @@
 <p>cmp2 works!</p>
 <p>The comp 2 component's activated route: {{this.activatedRoute}}</p>
-<input type="text" id="lastname" class="form-control" ngModel name="lastname" required minlength="5" #lre="ngModel">
+<input type="text" id="lastname" class="form-control" ngModel name="lastname" placeholder="LastName" required minlength="5" #lre="ngModel">
 <span class="help-block" style="color:red" *ngIf="lre.errors && lre.errors.required">lastname is required<br></span>
 <span class="help-block" style="color:red" *ngIf="lre.errors && lre.errors.minlength">lastname is min length is 5<br></span>
+
+<div [formGroup]="myForm">
+    <input type="text" id="Firstname" class="form-control" placeholder="Reactive FirstName" formControlName="myFirstName" required minlength="5" >
+    <span style="color: red;" *ngIf="!myForm.get('myFirstName').valid && myForm.get('myFirstName').errors.required">
+            firstname field is required. 
+        </span>
+    <span style="color: red;" *ngIf="!myForm.get('myFirstName').valid && myForm.get('myFirstName').errors.minlength">
+            firstname field minimal length is 5.
+        </span>
+</div>
+
+<input type="text" id="email" class="form-control" ngModel name="email" placeholder="email"  email #e="ngModel">
+<span>is touched= {{e.touched}}, is valid= {{e.valid}}</span><br>
+<span class="help-block" style="color:red" *ngIf="e.errors && e.errors.email">error of email<br></span>
+
+
 <button type="button" class="btn btn-primary" (click)="onClick(lre)">submit</button>
 <hr>
 <router-outlet></router-outlet>
