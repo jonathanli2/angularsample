@@ -7,6 +7,7 @@ import { Subcmp1Component } from 'src/subcmp1/subcmp1.component';
 import { Subcmp2Component } from 'src/subcmp2/subcmp2.component';
 import { FormComponent } from 'src/form/form.component';
 import { ReactFormComponent } from '../react-form/react-form.component';
+import { HttpComponent } from '../http/http.component';
 
 const routes: Routes = [
   {
@@ -28,12 +29,15 @@ const routes: Routes = [
     path: 'reactform', component: ReactFormComponent
   },
   {
+    path: 'http', component: HttpComponent
+  },
+  {
     path: '', component: AppComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, {enableTracing: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

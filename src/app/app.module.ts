@@ -15,6 +15,8 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { FormComponent } from '../form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReactFormComponent } from '../react-form/react-form.component';
+import { HttpComponent } from '../http/http.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { ReactFormComponent } from '../react-form/react-form.component';
     Subcmp2Component,
     BasicHighLightDirective,
     FormComponent,
-    ReactFormComponent
+    ReactFormComponent,
+    HttpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TabsModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [MessagingService],
   bootstrap: [AppComponent]

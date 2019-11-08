@@ -96,6 +96,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigate(['form'], {relativeTo: this.activatedRoute});
     } else if (data.id === 'reactform') {
       this.router.navigate(['reactform'], {relativeTo: this.activatedRoute});
+    } else if (data.id === 'http') {
+      this.router.navigate(['http'], {relativeTo: this.activatedRoute});
     }
   }
 }
