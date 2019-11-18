@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, throttleTime } from 'rxjs/operators';
 import { of, OperatorFunction, Observable, pipe } from 'rxjs';
+import { Post, Posts, Strings } from 'src/model/post.model';
+import { PostsService } from 'src/services/post.service';
+
+type MyFunc = (key: number, value: string) => void;
 
 @Component({
   selector: 'app-http',
@@ -9,15 +13,23 @@ import { of, OperatorFunction, Observable, pipe } from 'rxjs';
   styleUrls: ['./http.component.css']
 })
 
+
 export class HttpComponent implements OnInit {
   loadedPosts = [];
-  constructor(private http: HttpClient) { }
+  myfunc: MyFunc;
+
+  constructor(private http: HttpClient, private postService: PostsService) {
+    this.myfunc = (n: number, v: string) => {
+      console.log(v + ': ' + n);
+    };
+   }
 
   ngOnInit() {
-    // this.onFetchPosts();
+    this.postService.fetchPosts().subscribe( {next: post =>
+      this.loadedPosts = post
+    });
 
     const nums = of(1, 2, 3, 4, 5, 6);
-
     const squareValues = map(
         (val: number) => val * val
       );
@@ -52,24 +64,30 @@ export class HttpComponent implements OnInit {
       ).subscribe( x =>
         console.log(x)
       );
-}
+  }
 
-  onCreatePost(postData: {title: string, content: string}) {
+  onCreatePost(postData: Post) {
     console.log(postData);
-    this.http.post('https://restapitest-d6f8c.firebaseio.com/posts.json', postData)
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
+    this.postService.createAndStorePost(postData.title, postData.content);
   }
 
   onFetchPosts() {
-    this.http.get('https://restapitest-d6f8c.firebaseio.com/posts.json')
-      .subscribe(data => {
-        console.log(data);
-      });
+    this.postService.fetchPosts().subscribe( {next: post =>
+      this.loadedPosts = post
+    });
   }
 
   onClearPosts() {
+    this.postService.deletePosts().subscribe( () => {
+      this.loadedPosts = [];
+    })
+  }
 
+  onTest() {
+    this.myfunc(5, 'my number is');
+
+    const s: Strings = ['abc', 'def'];
+    const s1 = s[0];
+    console.log(s1);
   }
 }
