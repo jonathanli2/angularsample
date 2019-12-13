@@ -8,6 +8,7 @@ import { Subcmp2Component } from 'src/subcmp2/subcmp2.component';
 import { FormComponent } from 'src/form/form.component';
 import { ReactFormComponent } from '../react-form/react-form.component';
 import { HttpComponent } from '../http/http.component';
+import { AuthComponent } from 'src/auth/auth.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
   },
   {
     path: 'http', component: HttpComponent
+  },
+  {
+    path: 'auth', component: AuthComponent
   },
   {
     path: '', component: AppComponent

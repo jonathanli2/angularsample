@@ -23,6 +23,7 @@
     <tab heading="Form" id="form" (selectTab)="onSelect($event)"></tab>
     <tab heading="ReactForm" id="reactform" (selectTab)="onSelect($event)"></tab>
     <tab heading="http" id="http" (selectTab)="onSelect($event)"></tab>
+    <tab heading="auth" id="auth" (selectTab)="onSelect($event)"></tab>
   </tabset>
 </div>
 <div class="m-4">
@@ -33,6 +34,6 @@
   <p>{{this.count}}</p>
   <p appBasicHighlight [colorEnter]="'yellow'" [colorLeave]="'purple'">The app component's activated route: {{this.activatedRoute}}</p>
 </div><br>
-<div style="font-weight:700;">app component's router section is shown below the line</div>
+<div class="m-4" style="font-weight:700;">app component's router section is shown below the line</div>
 <hr>
 <router-outlet></router-outlet>

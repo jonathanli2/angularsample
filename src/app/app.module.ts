@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReactFormComponent } from '../react-form/react-form.component';
 import { HttpComponent } from '../http/http.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AuthComponent } from 'src/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     BasicHighLightDirective,
     FormComponent,
     ReactFormComponent,
-    HttpComponent
+    HttpComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
