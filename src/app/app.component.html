@@ -27,24 +27,12 @@
 </div>
 <div class="m-4">
   <p *ngIf="this.stockPrice !== -1">stock price is {{this.stockPrice}}</p>
-  <p >stock price from behaviorSubect is {{this.stockpriceFromBehaviorSubject}}</p>
+  <p >stock price from behaviorSubjct is {{this.stockpriceFromBehaviorSubject}}</p>
   <p *ngIf="this.stockPrice === -1" >stock price stopped due to {{this.stockPriceError}}</p>
   <p *ngIf="this.stockpriceFromBehaviorSubject === -1" >stock price stopped due to {{this.stockpriceFromBehaviorSubjectError}}</p>
   <p>{{this.count}}</p>
-<p appBasicHighlight [colorEnter]="'yellow'" [colorLeave]="'purple'">The app component's activated route: {{this.activatedRoute}}</p>
-<p myattribute>the app component content</p>
-<div class="container test">
-  <div class="row">
-    <div class="col-sm" >
-      <!--app-cmp1></app-cmp1-->
-    </div>
-    <div class="col-sm">
-      <!--app-cmp2></app-cmp2-->
-    </div>
-  </div>
-</div>
-</div>
-<hr>
-<div>router section</div>
+  <p appBasicHighlight [colorEnter]="'yellow'" [colorLeave]="'purple'">The app component's activated route: {{this.activatedRoute}}</p>
+</div><br>
+<div style="font-weight:700;">app component's router section is shown below the line</div>
 <hr>
 <router-outlet></router-outlet>
