@@ -2,24 +2,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post, Posts } from 'src/model/post.model';
 import { map } from 'rxjs/operators';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({providedIn: 'root'})
 
 export class PostsService {
-    constructor(private http: HttpClient) {
+    baseUrlPath = 'https://restapitest-d6f8c.firebaseio.com/mydb/post';
+    jsonSuffix = '.json';
 
+    constructor(private http: HttpClient) {
     }
 
-    createAndStorePost(title: string, content: string) {
-        const post: Post = {title, content};
-        this.http.post('https://restapitest-d6f8c.firebaseio.com/posts.json', post)
+    postData(subPath, payload) {
+        if (subPath) {
+          subPath = '/' + subPath;
+        }
+        this.http.post(this.baseUrlPath + subPath + this.jsonSuffix, payload)
         .subscribe(responseData => {
           console.log(responseData);
         });
     }
 
+    putData(subPath, payload) {
+      if (subPath) {
+        subPath = '/' + subPath;
+      }
+
+      this.http.put(this.baseUrlPath + subPath + this.jsonSuffix, payload)
+      .subscribe(responseData => {
+        console.log(responseData);
+      });
+  }
+
     fetchPosts()  {
-        return this.http.get('https://restapitest-d6f8c.firebaseio.com/posts.json')
+        return this.http.get(this.baseUrlPath + this.jsonSuffix)
         .pipe( map( (responseData: Posts) => {
           const postArray: Post[] = [];
           for (const key in responseData) {
@@ -32,6 +48,6 @@ export class PostsService {
     }
 
     deletePosts() {
-      return this.http.delete('https://restapitest-d6f8c.firebaseio.com/posts.json');
+      return this.http.delete(this.baseUrlPath + this.jsonSuffix);
     }
 }

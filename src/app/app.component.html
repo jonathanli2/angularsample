@@ -26,14 +26,14 @@
     <tab heading="auth" id="auth" (selectTab)="onSelect($event)"></tab>
   </tabset>
 </div>
-<div class="m-4">
-  <p *ngIf="this.stockPrice !== -1">stock price is {{this.stockPrice}}</p>
-  <p >stock price from behaviorSubjct is {{this.stockpriceFromBehaviorSubject}}</p>
+<div class="ml-4">
+  <div *ngIf="this.stockPrice !== -1" class="mr-3">stock price is {{this.stockPrice}}</div>
+  <div>stock price from behaviorSubjct is {{this.stockpriceFromBehaviorSubject}}</div>
   <p *ngIf="this.stockPrice === -1" >stock price stopped due to {{this.stockPriceError}}</p>
   <p *ngIf="this.stockpriceFromBehaviorSubject === -1" >stock price stopped due to {{this.stockpriceFromBehaviorSubjectError}}</p>
-  <p>{{this.count}}</p>
-  <p appBasicHighlight [colorEnter]="'yellow'" [colorLeave]="'purple'">The app component's activated route: {{this.activatedRoute}}</p>
-</div><br>
-<div class="m-4" style="font-weight:700;">app component's router section is shown below the line</div>
+  <div> count is: {{this.count}}</div>
+  <div appBasicHighlight [colorEnter]="'yellow'" [colorLeave]="'purple'">The app component's activated route: {{this.activatedRoute}}</div>
+</div>
+<div class="m-2" style="font-weight:700;">app component's router section is shown below the line</div>
 <hr>
 <router-outlet></router-outlet>

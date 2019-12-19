@@ -25,9 +25,6 @@ export class HttpComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.postService.fetchPosts().subscribe( {next: post =>
-      this.loadedPosts = post
-    });
 
     const nums = of(1, 2, 3, 4, 5, 6);
     const squareValues = map(
@@ -59,7 +56,7 @@ export class HttpComponent implements OnInit {
 
     const sqEven = of(1, 2, 3, 4, 5, 6)
       .pipe(
-        filter((n: number) => n %2 === 0),
+        filter((n: number) => n % 2 === 0),
         map(n => n * n)
       ).subscribe( x =>
         console.log(x)
@@ -68,7 +65,15 @@ export class HttpComponent implements OnInit {
 
   onCreatePost(postData: Post) {
     console.log(postData);
-    this.postService.createAndStorePost(postData.title, postData.content);
+    this.postService.postData('', postData);
+  }
+
+  onPut(postForm) {
+    console.log(postForm);
+    const values = postForm.value;
+    const post = {title: values.title, content: values.content};
+
+    this.postService.putData(values.key, post);
   }
 
   onFetchPosts() {
@@ -77,17 +82,21 @@ export class HttpComponent implements OnInit {
     });
   }
 
-  onClearPosts() {
+  onDeletePosts() {
     this.postService.deletePosts().subscribe( () => {
       this.loadedPosts = [];
-    })
+    });
   }
 
-  onTest() {
-    this.myfunc(5, 'my number is');
+  onClear() {
+      this.loadedPosts = [];
+  }
 
-    const s: Strings = ['abc', 'def'];
-    const s1 = s[0];
-    console.log(s1);
+  onTest(postForm) {
+    // update a single field
+    console.log(postForm);
+    const value = postForm.value.title;
+
+    this.postService.putData(postForm.value.key, JSON.stringify(value));
   }
 }
