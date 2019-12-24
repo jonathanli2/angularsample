@@ -3,6 +3,7 @@ import { TabDirective } from 'ngx-bootstrap/tabs';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { interval, Subscription } from 'rxjs';
 import { MessagingService } from '../messaging/messaging.service';
+import { AuthService } from 'src/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +26,21 @@ export class AppComponent implements OnInit, OnDestroy {
   stockPriceError: string;
   stockpriceFromBehaviorSubjectError: string;
 
+  private userSub: Subscription;
+  isAuthenticated = false;
+
   constructor(private router: Router,
               public activatedRoute: ActivatedRoute,
-              private messaging: MessagingService) {
+              private messaging: MessagingService,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !user ? false : true;
+      console.log('user is authenticated: ' + this.isAuthenticated);
+    });
+
     // this.currentTab = 'home';
     // this.router.navigate(['/']);
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -82,6 +92,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.eventSub.unsubscribe();
     this.stockObservableSub.unsubscribe();
     this.stockSubjectSub.unsubscribe();
+    this.userSub.unsubscribe();
   }
 
   onSelect(data: TabDirective): void {

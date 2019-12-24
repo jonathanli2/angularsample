@@ -23,7 +23,8 @@
     <tab heading="Form" id="form" (selectTab)="onSelect($event)"></tab>
     <tab heading="ReactForm" id="reactform" (selectTab)="onSelect($event)"></tab>
     <tab heading="http" id="http" (selectTab)="onSelect($event)"></tab>
-    <tab heading="auth" id="auth" (selectTab)="onSelect($event)"></tab>
+    <tab heading="login" id="auth" (selectTab)="onSelect($event)" *ngIf="!isAuthenticated"></tab>
+    <tab heading="logout" id="logout" (selectTab)="onSelect($event)" *ngIf="isAuthenticated"></tab>
   </tabset>
 </div>
 <div class="ml-4">
