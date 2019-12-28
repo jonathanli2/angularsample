@@ -16,9 +16,10 @@ import { FormComponent } from '../form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReactFormComponent } from '../react-form/react-form.component';
 import { HttpComponent } from '../http/http.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from 'src/auth/auth.component';
 import { LoadingSpinnerComponent } from 'src/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from 'src/auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { LoadingSpinnerComponent } from 'src/loading-spinner/loading-spinner.com
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [MessagingService],
+  providers: [MessagingService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -111,6 +111,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigate(['http'], {relativeTo: this.activatedRoute});
     } else if (data.id === 'auth') {
       this.router.navigate(['auth'], {relativeTo: this.activatedRoute});
+    } else if (data.id === 'logout') {
+      this.authService.user.next(null);
     }
   }
 }

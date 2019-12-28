@@ -25,13 +25,17 @@ export class PostsService {
         }
 
         // tslint:disable-next-line: max-line-length
-        return this.http.post(this.baseUrlPath + subPath + this.jsonSuffix, payload,  {params: new HttpParams().set('auth', userdata ? userdata.token : '')});
+        return this.http.post(
+          this.baseUrlPath + subPath + this.jsonSuffix,
+          payload,
+          {params: new HttpParams().set('auth', userdata ? userdata.token : '')}
+          );
       })
     ).subscribe(responseData => {
         console.log(responseData);
       });
   }
-user
+
   putData(subPath, payload) {
     if (subPath) {
       subPath = '/' + subPath;
